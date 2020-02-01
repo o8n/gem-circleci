@@ -1,4 +1,4 @@
-require "kinki_train_info/version"
+require 'kinki_train_info/version'
 
 module KinkiTrainInfo
   def self.test
