@@ -8,6 +8,7 @@ jobs: # a collection of steps
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.0.1
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
 
@@ -32,6 +33,12 @@ jobs: # a collection of steps
           key: kinki-train-info-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+
+      # run rubocop!
+      - run:
+          name: run rubocop
+          command: |
+            bundle exec rubocop
 
       - run:
           name: Run rspec in parallel
